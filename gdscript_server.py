@@ -26,10 +26,11 @@ func _init():
 \tquit() # don't forget to quit!
 '''
 
-
 # set environment language to english (prevent Godot error message)
 os.environ['LANG'] = 'en_US.utf8'
 
+# make Godot executable
+os.system('chmod +x godot')
 
 # create the Flask Application
 app = Flask(__name__)
