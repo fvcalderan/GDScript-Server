@@ -49,9 +49,11 @@ def simple_page(_input : str = DEFAULT_SCRIPT, _output : str = '') -> str:
             <h3>GDScript Server - By fvcalderan -
             <a href="https://github.com/fvcalderan/GDScript-Server">Source</a>
             </h3>
-            <h3>GDScript Server - By fvcalderan</h3>
-            <p>Rules: Time Limit is {TIMEOUT}s; File calls and some OS calls
-            aren't allowed.</p>
+            <p><b>Rules:</b> Time Limit is {TIMEOUT}s; File calls and some OS
+            calls aren't allowed.</p>
+            <p><b>Use it with cURL:</b> curl -X POST -F
+            "script=$(cat example_script.gd)" "gdscript-server.herokuapp.com"
+            </p>
             <form method="POST">
                 <p><b>Script:</b></p>
                 <textarea rows="10" cols="60" name="script"
