@@ -1,0 +1,51 @@
+/* Author: Felipe V. Calderan
+ * Copyright: Copyright (C) 2021 Felipe V. Calderan
+ * License: BSD 3-Clause "New" or "Revised" License
+ * See the full license inside LICENSE.txt file */
+
+a {
+    color: #f1fa8c;
+}
+
+img {
+    width: 90%;
+    margin: auto;
+    background: white;
+    padding: 1px;
+}
+
+body {
+    margin: auto;
+    padding: 18px;
+    background-color: #282a36;
+    color: #f8f8f2;
+    font-family:"Cascadia Mono", Courier, monospace;
+}
+
+pre {
+    color: #f8f8f2;
+    font-family:"Cascadia Mono", Courier, monospace;
+}
+
+textarea {
+    background-color: #1d1e27;
+    color: #f8f8f2;
+    font-family:"Cascadia Mono", Courier, monospace;
+    font-size: 16px;
+}
+
+b {
+    color: #ff79c6;
+}
+
+h3 {
+    color: #ffb86c;
+}
+
+input {
+    background-color: #50fa7b;
+    font-family:"Cascadia Mono", Courier, monospace;
+    font-size: 18px;
+    font-weight: bold;
+    width:200px;
+}

@@ -2,7 +2,7 @@ import os
 import sys
 import random
 import subprocess
-from flask import Flask, request
+from flask import Flask, request, render_template, url_for
 
 __author__ = 'Felipe V. Calderan'
 __copyright__ = 'Copyright (C) 2021 Felipe V. Calderan'
@@ -34,39 +34,6 @@ os.system('chmod +x godot')
 
 # create the Flask Application
 app = Flask(__name__)
-
-
-def simple_page(_input : str = DEFAULT_SCRIPT, _output : str = '') -> str:
-    return f'''
-    <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <title>GDScript Server</title>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width,initial-scale=1">
-        </head>
-        <body>
-            <h3>GDScript Server - By fvcalderan -
-            <a href="https://github.com/fvcalderan/GDScript-Server">Source</a>
-            </h3>
-            <p><b>Rules:</b> Time Limit is {TIMEOUT}s; File calls and some OS
-            calls aren't allowed.</p>
-            <form method="POST">
-                <p><b>Script:</b></p>
-                <textarea rows="10" cols="60" name="script"
-                onkeydown="if(event.keyCode===9){{
-                    var v=this.value,s=this.selectionStart,e=this.selectionEnd;
-                    this.value=v.substring(0, s)+'\t'+v.substring(e);
-                    this.selectionStart=this.selectionEnd=s+1;
-                    return false;}}">{_input}</textarea><br>
-                <input type="submit" value="Submit">
-            </form>
-            <br>
-            <p><b>{"Output:" if _output else ""}</b></p>
-            <pre>{_output}</pre>
-        </body>
-    </html>
-    '''
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -119,14 +86,20 @@ def gdscript_form():
 
         # check if user is using a Browser or cURL/Non-browser program
         if request.user_agent.browser is not None:
-            return simple_page(content, godot_ans)
+            #return simple_page(content, godot_ans)
+            return render_template(
+                'index.html', timeout=TIMEOUT, content=content, gans=godot_ans
+            )
         else:
             return godot_ans
 
     # if it's not a POST request, handle a GET request instead
-    return simple_page()
+    # return simple_page()
+    return render_template(
+        'index.html', timeout=TIMEOUT, content=DEFAULT_SCRIPT
+    )
 
 
 # uncomment to run the server locally with debug enabled on port 5000
-# if __name__ == '__main__':
-    # app.run(debug=True, port=5000)
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)

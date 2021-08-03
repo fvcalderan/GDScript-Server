@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}GDScript Server{% endblock %}
+
+{% block body %}
+    <h3>GDScript Server - By fvcalderan -
+    <a href="https://github.com/fvcalderan/GDScript-Server">Source</a>
+    </h3>
+    <p><b>Rules:</b> Time Limit is {{ timeout }}s; File calls and some OS
+    calls aren't allowed.</p>
+    <form method="POST">
+        <p><b>Script:</b></p>
+        <textarea rows="10" cols="60" name="script"
+        onkeydown="if(event.keyCode===9){
+            var v=this.value,s=this.selectionStart,e=this.selectionEnd;
+            this.value=v.substring(0, s)+'\t'+v.substring(e);
+            this.selectionStart=this.selectionEnd=s+1;
+            return false;
+        }">{{ content }}</textarea><br>
+        <input class="submitbtn" type="submit" value="RUN">
+    </form>
+    <br>
+    <p><b>{{ 'Output:' if gans else ''}}</b></p>
+    <pre>{{ gans }}</pre>
+{% endblock %}
