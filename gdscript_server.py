@@ -86,7 +86,6 @@ def gdscript_form():
 
         # check if user is using a Browser or cURL/Non-browser program
         if request.user_agent.browser is not None:
-            #return simple_page(content, godot_ans)
             return render_template(
                 'index.html', timeout=TIMEOUT, content=content, gans=godot_ans
             )
